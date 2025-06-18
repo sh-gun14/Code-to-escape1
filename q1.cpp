@@ -1,18 +1,25 @@
-#include <bits/stdc++.h>
-using namespace std;
+vector<string> helloWorld(int N) {
+    vector<string> answer;
 
+    for (int i = 1; i <= N; i++) {
 
-int countOccurrences(vector<int>& a, int target) {
-    int low = lower_bound(a.begin(), a.end(), target) - a.begin();
-    int high = upper_bound(a.begin(), a.end(), target) - a.begin();
-    return high - low;
-}
+        if (i % 3 == 0 && i % 5 == 0) {
+            answer.push_back("HelloWorld");
+        }
 
-int main() {
-    int n, target;
-    cin >> n >> target;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << countOccurrences(a, target) << endl;
-    return 0;
+        else if (i % 3 == 0 && i % 5 != 0) {
+            answer.push_back("Hello");
+        }  
+
+        else if (i % 5 == 0 && i % 3 != 0) {
+            answer.push_back("World");
+        }
+
+        else {
+            answer.push_back(to_string(i));
+        }
+
+    }
+
+    return answer;
 }
