@@ -1,30 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+string removeDuplicates(string str, int n)
+{
+    //Write your code here.
+     set<char> seen;
+    string result;
 
-bool isEnough(vector<int>& a, int h, int wood) {
-    long long sum = 0;
-    for (int height : a) {
-        if (height > h) sum += (height - h);
+    for (char ch : str) {
+        if (seen.find(ch) == seen.end()) {
+            seen.insert(ch);
+            result.push_back(ch);
+        }
     }
-    return sum >= wood;
-}
-
-int maxSawHeight(vector<int>& a, int wood) {
-    int l = 0, r = *max_element(a.begin(), a.end()), ans = 0;
-    while (l <= r) {
-        int mid = (l + r) / 2;
-        if (isEnough(a, mid, wood)) {
-            ans = mid;
-            l = mid + 1;
-        } else r = mid - 1;
-    }
-    return ans;
-}
-
-int main() {
-    int n, wood; cin >> n >> wood;
-    vector<int> a(n);
-    for (int i = 0; i < n; ++i) cin >> a[i];
-    cout << maxSawHeight(a, wood) << endl;
-    return 0;
+    
+    return result;
 }
