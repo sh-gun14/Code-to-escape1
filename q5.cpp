@@ -1,25 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
+string removeDuplicates(string str, int n)
+{
+    //Write your code here.
+     set<char> seen;
+    string result;
 
-int searchInsert(vector<int>& a, int target) {
-    int l = 0, r = a.size() - 1, ans = a.size();
-    while (l <= r) {
-        int mid = (l + r) / 2;
-        if (a[mid] == target) return mid;
-        else if (a[mid] < target) l = mid + 1;
-        else {
-            ans = mid;
-            r = mid - 1;
+    for (char ch : str) {
+        if (seen.find(ch) == seen.end()) {
+            seen.insert(ch);
+            result.push_back(ch);
         }
     }
-    return ans;
-}
-
-int main() {
-    int n, target;
-    cin >> n >> target;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++) cin >> a[i];
-    cout << searchInsert(a, target) << endl;
-    return 0;
+    
+    return result;
 }
